@@ -67,7 +67,8 @@ chain_cols <- c(col_1, col_2, col_3, col_4)
 #| label: data-import
 # load dataset
 
-raw_data <- read_delim("data/01_raw/Dataset_DeConinck_et_al.csv", delim = ";")
+raw_data <- read_delim(here("data", "01_raw", "Dataset_DeConinck_et_al.csv"), delim = ";")
+
 ```
 
 ```{r}
@@ -185,7 +186,7 @@ clean_data <- processed_data |>
 
 write_csv2(
   clean_data,
-  "data/02_processed/processed_Dataset_DeConinck_et_al.csv"
+  here("data", "02_processed", "processed_Dataset_DeConinck_et_al.csv")
 )
 ```
 

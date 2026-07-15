@@ -8,7 +8,7 @@ Influence of Right-Wing-Authoritarianism on Migrant's perceived Deservingness
 
 To what extend do individual Right-Wing-Authoritarianism tendencies influence the deservingness perception regarding migrants? This is researched across all five CARIN criteria, following W. van Oorschot's (2000).
 
-**Hypotheses tested:**
+**Hypotheses:**
 
 *H1:* Higher RWA is negatively associated with perceived migrant deservingness across all CARIN dimensions
 
@@ -33,14 +33,14 @@ Social-Groups-Seminar-Paper/
 
 To allow quickly running the code, the model fitted with brms is saves in `data/fit_multivar.rds`. 
 
-To run the full model by going through the fitting process simply delete line 344 (`file = "data/03_model/fit_multivar.rds`) and delete the `,` in end of the line above.
+To run the full model by going through the fitting process simply delete line 343 (`file = here("data", "03_model", "fit_multivar")`) and delete the `,` in end of the line above.
 
-Should you run into too long computation times, deleting the loo diagnostic code chunk (line 832-839) could help. 
+Should you run into too long computation times, deleting the loo diagnostic code chunk (line 835-841) could help. 
 
 
 ## Tools used: 
 
-The code is made sure to work with R4.5.2.
+The code is made sure to work with R 4.5.2.
 
 The code was not tested with any other versions of R. 
 

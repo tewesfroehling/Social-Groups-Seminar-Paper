@@ -1,0 +1,375 @@
+---
+format:
+
+  pdf:
+    documentclass: article
+    keep-tex: false
+    toc: false
+    include-in-header:
+      text: |
+        \usepackage{setspace}
+        \usepackage{microtype}
+        \setlength{\parindent}{15pt}
+        \usepackage{makecell}
+    include-before-body:
+      text: |
+        \begin{titlepage}
+        \setstretch{1.15}
+        \centering
+        
+        % 1. Institution Header
+        {\large University of Mannheim}\\[0.5cm]
+        {\large Faculty of Social Sciences}\\[0.5cm]
+        {\large\bfseries HS Comparative Government }\\[5cm]
+        
+        % 2. Main Title
+        {\LARGE\bfseries Influence of Right-Wing-Authoritarianism on \\ Migrant Deservingness}\\[0.4cm]
+        {\large Term Paper Social Groups}\\[5cm]
+        
+        % 3. Two-column Metadata Block
+        \raggedright
+        \begin{tabular}{@{}ll}
+          \textbf{Seminar:} & HS Selected Topics in Comparative Government: \\
+                               & Social Groups and their relevance in the political process \\[0.2cm]
+          \textbf{Course Instructor:} & Lena Maria Huber \\[0.2cm]
+          \textbf{Semester:} & Spring/Summer 2026 \\[0.2cm]
+          \textbf{Date of Submission:} & 15.07.2026 \\[0.6cm]
+          
+          \textbf{Author:} & Tewes Benedict Fröhling \\[0.2cm]
+          \textbf{Student-ID:} & 2146915 \\[0.2cm]
+          \textbf{Address:} & Jungbuschstr. 15, 68159 Mannheim \\[0.2cm]
+          \textbf{E-Mail:} & tewes.froehling@students.uni-mannheim.de \\[0.2cm]
+          \textbf{Course of Studies:} & Political Science \\[0.2cm]
+          \textbf{Semester:} & 4th
+        \end{tabular}
+        
+        \end{titlepage}
+        \clearpage
+number-sections: true
+papersize: a4
+fontsize: 11pt
+linestretch: 1.5
+geometry:
+  - top=2cm
+  - bottom=2cm
+  - left=2.5cm
+  - right=2.5cm
+  - footskip=20pt
+# AI use note: used ai to format this title page and header 
+---
+
+
+## Introduction {#sec-introduction}
+
+In recent years migration has evolved to a persistently salient political issue in Europe, driven by debates over asylum policy, border control, deportation and the rise of parties campaigning for stronger immigration policies.
+Previous research revealed a strong influence negative of Right-Wing-Authoritarianism on attitudes towards migrants (see for example @HowIdeologicalAttitudes or @araujoHumanValuesIdeological2020). Compared to attitude towards migrants, the concept of deservingness displays a more fine-grained measure. However it is still not clear whether RWA influences all deservingness criteria equally. 
+To add to this research gap, this paper asks, to what extent right-wing-authoritarianism predicts deservingness perception of migrants  across the five CARIN criteria of deservingness in European countries. 
+To do so, this paper introduces a Bayesian multivariate regression model, estimating all five CARIN dimensions. For this, survey data from seven European countries is used. 
+This paper starts with a review of existing literature on RWA and migrant deservingness followed by the theoretical argument from which two hypotheses are stated. Following this, the empirical analysis is explained in detail and results are presented and discussed before the paper is concluded.
+
+## Literature Review {#sec-literature}
+
+**Right Wing Authoritarianism**
+
+Following @altemeyerRightWingAuthoritarianism1981, Right-Wing-Authoritarianism (RWA) can be conceptualized as the combination of three interrelated attitudes: conventionalism, which means the agreement with traditional societal norms, authoritarian submission, meaning the tendency to obey norm representing authority figures, and authoritarian aggression, representing the willingness to engage in authority-sanctioned aggression toward individuals or groups violating the traditional norms [@HowIdeologicalAttitudes, p. 674]. 
+
+The theoretical concept of RWA can be operationalized in multiple ways. The approach by @altemeyerRightWingAuthoritarianism1981 is one of them. He saw, that these three attitudes were strongly inter-correlated, but still decided to use a uni-dimensional measure for it. However it has to be noted, that the concept of a uni-dimensional measure is criticized and multiple multi-dimensional measures were developed, pursuing the goal of measuring the three RWA facets independently, among other advantages, allowing for more detailed analysis [@duckittTripartiteApproachRightWing2010; @duckittMultidimensionalityRightWingAuthoritarian; @bizumicInvestigatingRightWing2018]. In line with the goal of this paper, RWA will be referred to as of a uni-dimensional predictor, as the general influence of RWA on the criteria of deservingness is researched.
+
+**Influences of Right-Wing-Authoritarianism on Attitudes towards migrants**
+
+Previous research found RWA as a strong predictor for anti-immigrant attitudes, having negative effects across different countries [@HowIdeologicalAttitudes; @araujoHumanValuesIdeological2020]. This can be explained with the general concept of RWA, as RWA represents a concern about the stability of ingroup norms as well as the societal established set of rules, norms and order, to which immigrants can be seen as a threat [@altemeyerRightWingAuthoritarianism1981; @araujoHumanValuesIdeological2020]. 
+
+**Migrant Deservingness Perception**
+
+While researching attitudes towards immigrants contributes to understanding for example policy support for (anti-)immigration policies or similar, this is not the only measurement in the direction of understanding support for migrants. Another approach to this is the migrant deservingness scale (MDS). *Deservingness* can be referred to as the perceived support for migrants to permanently settle in the destination country and gain access to societal services [@deconinckApplyingCARINCriteria2024]. Using this scale instead allows for a more refined view on immigration attitude, as it does not simply ask whether migrants are welcome, but under which conditions. This is why this paper will focus on the concept of deservingness. Previous research has focussed mainly on public view on welfare reception generally and for migrants [@ratzmannConceptualisingRoleDeservingness2021a; @oorschotWhoShouldGet2000; -@vanoorschotMakingDifferenceSocial2006], but very few focused on the distinct criteria used by the public to determine migrant deservingness [@deconinckApplyingCARINCriteria2024].  
+
+Deservingness itself can be split into different criteria all affecting the overall perceived deservingness. In this paper the Control, Attitude, Reciprocity, Identity, Need (CARIN) framework by @oorschotWhoShouldGet2000 will be used. The framework is widely used to evaluate the deservingness of welfare recipiency @deconinckWhoAllowedStay2020. It is a descriptive measure rather than a normative theory [@aksitSettlementDeservingnessPerceptions2025], and the validity of the criteria has been confirmed in multiple cross country analysis and was recontectualized accordingly [@aksitSettlementDeservingnessPerceptions2025; @deconinckWhoAllowedStay2020; @deconinckApplyingCARINCriteria2024]. The CARIN deservingness criteria mediate social structural characteristics and concrete preferences [@meulemanWelfareDeservingnessOpinions2020] and are therefore an interesting aspect for research to further understand and research migrant support. 
+
+
+In the context of migrant deservingness perception the CARIN criteria have to be slightly adapted and recontexualized following @deconinckApplyingCARINCriteria2024. The control dimension focusses on whether migrants are perceived as forced to flee or in other words, to what extend the perception is about whether it is their own and free decision to migrate. Attitude translates into whether migrants are perceived as gratefull 
+
+
+*still missing: In the context of migration the CARIN criteria can be adapted accordingly:*
+- Definition refugees and migrants -> will focus on migrant term
+[@deconinckApplyingCARINCriteria2024]
+
+
+
+
+Previous research found various predictors for CARIN deservingness criteria.
+Specific media consumption in various ways has been found to be linked with perceived threat and deservingness [@deconinckCARINMigrantsNews2024; @deconinckRightWingAuthoritarianismSocial2024]. A more general finding is that media-framing is influencing deservingness perception drastically [@deconinckWhoAllowedStay2020]. 
+
+Political orientation was found to lead to differences in the deservingness perception across partisan lines.  Liberals and conservatives differ significantly in their perception of political, economic and climate change migrants. Overall liberals tend to rate all migrant groups twice as deserving compared to conservatives, the difference being especially large when it comes to economic migrants [@aksitSettlementDeservingnessPerceptions2025].
+
+Research about the association between Social Dominance Orientation (SDO), meaning the preference for hierarchical relations in society between social groups and deservingness revealed a negative association with higher SDO values, while RWA and SDO are strongly related 
+[@araujoHumanValuesIdeological2020; @HowIdeologicalAttitudes]. 
+
+
+## Theory {#sec-theory} currently 300 ideally 500
+
+RWA has been proven to reliably predict negative attitudes towards immigrants [@HowIdeologicalAttitudes; @araujoHumanValuesIdeological2020]. Deservingness however is a more detailed measure than the general attitude toward immigrants and it still has to be researched, how RWA predicts particular aspects of deservingness. - REFERENCE - 
+When following @altemeyerRightWingAuthoritarianism1981 in the definition of RWA, it consists out of the combination of submission to authority, aggression towards norm-violation and conventionalism. These three components share a common thread: the general concern of maintaining the social order inside the ingroup [@altemeyerRightWingAuthoritarianism1981; @HowIdeologicalAttitudes]. 
+Migrants can be perceived as such threat to ingroup norms on multiple levels, like on the economic, cultural and social order level, but also on identity threat to national belonging and symbolic threats to worldviews [@jarmakowskiWhyImmigrantsMake2021; @burhanAlteringPerceivedCultural2016].
+
+
+Therefore I argue that RWA's general negative effect on attitudes towards migration should also appear in the perceived deservingness for migrants. 
+Following this argument, the first hypothesis is stated as following: 
+
+  *H1: Higher RWA is negatively associated with perceived migrant deservingness across all CARIN dimensions*
+
+Adding to this, this paper additionally explores whether some deservingness criteria are influenced stronger than other. I argue, that as the control dimension, evaluating the compliance of migrants to rules and legal procedures, is closely tied to the logic behind RWAs conceptual sub component of authoritarian submission, while the identity dimension, evaluating the cultural similarity and compatibility, is directly linked to RWAs sub-dimension of conventionalism. In contrast to this, need states the weakest link to the conceptualization of RWA, as it evaluates the perceived humanitarian circumstances which are not directly linked to the aspects of RWA. Thereby the sub-dimensions of RWA act as a conceptual scaffolding, for why variance (heterogeneity?) across the CARIN dimensions is expected, rather than as separately measured mechanisms. The model operationalizes RWA as a unidirectional measure [@oorschotWhoShouldGet2000; @altemeyerRightWingAuthoritarianism1981]. 
+Following this argument, the second hypothesis is stated as following: 
+
+  *H2: The negative association between RWA and migrant deservingness perception is stronger for norm-proximate dimensions (Control & Identity) than for need-based dimensions (Need).*
+
+The research design to test *H1* and *H2* will be described in @sec-design.
+
+
+## Research Design {#sec-design} 
+
+### Empirical Strategy
+
+To test the hypotheses, a bayesian multivariate model was fitted accordingly. Using bayesian framework was chosen because it estimates full posterior distributions rather than relying only on binary significance threshold. This allows for the interpretation for the credibility, using the 95% credible interval, and the effect size if RWA across all CARIN dimensions, which is essential to be able to test H2.
+The mutlivariate model type was used because respondents answered on all questions regarding the CARIN criteria and the criteria are expected to be highly inter-correlated. The model was created with `brms` and STAN using `mvbind()` and `set_rescor(TRUE)` to consider the correlation rather than ignoring it, finally allowing for a comparison between different CARIN criteria, rather than ignoring the correlation and interpreting unrelated models. There were no country level random intercepts included in the model to possibly adapt for possible inter country differences, to remain the models simplicity.
+
+### Data
+
+To test these hypotheses, a dataset by @deconinckPublicAttitudesImmigration2021 was used. This dataset is openly available and includes data from Austria, Belgium, Germany, Hungary, Italy, Spain, Sweden as well as the United States and Columbia from May and June 2021 with a total N of 13,645 with no missing values (some missing values occur naturally in country specific variables, for example country specific education variables, only consisting out of cases for one country, with missing values for all cases from other countries). \
+Originally these countries were selected to present a wide variety of national characteristics, like the size of economy, political influence, border situation, popularity as asylum-seeker destination. \
+However, this analysis focuses on the European countries in the dataset, dropping the United States and Columbia resulting in a new total N = 10,599, which still is large enough to sufficiently interpret the results of the model. \
+The decision to focus on European countries can be reasoned with the selected countries sharing a broadly similar macro-context, all sharing EU-Membership, overlapping migration policy frameworks (Common European Asylum System, Schengen) and recent inner European migration debates. \
+In contrast to this, the general context of migration differs significantly in Columbia and the United States. In line with this argument, the deservingness construct is closely related to the welfare-state context. \
+While these differences may not be completely off-setting the sample, those two countries with a combined n = 3.046 would be unbalanced compared to the 10,599 cases for European countries sharing a similar context. \
+As will be explained later, this research design does not use country level random effects. For this aspect, it is additionally useful to manipulate the dataset, so it is more homogenous, to limit the risk of country level confounders.\
+The data was originally collected using an online survey for a sample of the adult population (aged 25-65) of the European countries creating a representative sample of the adult population of each country [@deconinckCARINMigrantsNews2024; @deconinckPublicAttitudesImmigration2021].
+
+### Measures
+
+There are five dependent variables included in this research design, one for each of the CARIN criteria. In order to create these variables, the individual questions `V039_1-V039_13` (all coded in integer variables ranging from 1 to 5) out of the original dataset were used and combined by creating a variable with the row means of all components for the deservingness criteria. \
+The Attitude variable (`CARIN_Attitude`) was build out of the mean of V039_1 and V039_2 asking about if the participants think that migrants should be grateful to be allowed to remain in the country (`V039_1`) and if they do not have the right to complain about their circumstances (`V039_2`) higher values equaling stronger agreement and therefore in the combined variable, higher values equal a higher demand for positive attitude towards the host society. The `CARIN_Attitude` variable has a mean of 3.34 and describes a span of values ranging from 1 to 5. \
+The Control variable (`CARIN_Control`) is coded to the mean of `V039_3`, `V039_4r` and `V039_5r`. These variables ask, whether migrants only coming for work and wages (`V039_3`), because of armed conflict in their home-country (`V039_4r`) or because of the consequences of climate change (`V039_5r`) should not be allowed to stay in the participants country. Higher values again equal a stronger agreement to the question. In the process of building `CARIN_Control`, `V039_4`and `V039_5` were recoded into `V039_4r` and `V039_5r` to fit the direction of `V039_3` and the other CARIN variables. The `CARIN_Control` variable has a mean of 2.90 and describes a span of values from 1 to 5. \
+Creating the reciprocity variable (`CARIN_Reciprocity`) was done using the row mean of `V039_6`, `V039_7` and `V039_8`. They were asking, whether only migrants with economically profiting work skills for the participants country (`V039_6`), who pay taxes and have a job (`V039_7`) or who can positively contribute to the culture of the participants country should be allowed to stay. Again higher values equaling stronger agreement to the questions asked. The mean of this variable is located around 3.11 with values distributed from 1 to 5. \
+In order to code the `CARIN_Identity`, the row mean of `V039_9`, `V039_10` and `V039_11` were used to create this measure for the Identity dimension of migrant deservingness perception. The variables out of the original dataset ask, whether the participants agree, that migrants with a similar cultural background (`V039_9`), religious background (`V039_10`) or ethnic background should be allowed to stay, higher values equaling stronger agreement. The variable takes values from 1 to 5, with a mean of 2.53. \
+Creating the final deservingness variable, `CARIN_Need`, the row mean of `V039_12`and `V039_13` were used. They ask whether the participants agree with only "truly poor" migrants (`V039_13`) or those with dependent young children (`V039_12`) should be allowed to stay in the participants country. Higher values again represent stronger agreement and the variable consists out of values ranging from 1 to 5 with a mean of 2.39, which is the lowest mean out of the `CARIN_` variables [@deconinckPublicAttitudesImmigration2021]. 
+
+The Independent predictor variable used for the model is coded using the row mean of a set of six variables (`v036_1` - `V036_6`) assessing right-wing-authoritarianism aspects and tendencies. The RWA Variable (`RWA_Total`) describes values on a span from 1 to 7 with a mean of 3.57. All variables used for this (`V036_1` - `V036_6`) are coded as an integer variable with values from 1 to 7, higher values equaling stronger agreement, while lower numbers translate into stronger disagreement with 4 equaling neither agree nor disagree. 
+In these, participants were asked if they think thats it is great that many young people prepare defy authority (`V036_1`, recoded into `V036_1r` to change the direction to match the direction of `RWA_Total`) and if they think that what the participants country need the most ist discipline, following the leaders in unity (`V036_2`). These two variables represent the Authoritarian submission aspect of RWA. 
+Adding to this and pursing the conventionalism aspect of RWA, it was asked, where the participants agree with the statement, that God's laws about pornography, abortion and marriage should be strictly followed (`V036_3`) and that there is nothing wrong with premarital sexual intercourse (`V036_4` was  recoded to `V036_4r` to change the direction in the end matching with `RWA_Total`).
+To finish the `RWA_Total` variable, two variables were added for the aggression aspect of RWA. It was asked if the participants society does not need tougher government and stricter laws (`V036_5`, recoded by changing the direction into `V036_5r` to match the overall orientation of the RWA variable) and whether they agree, that recent happenings in regards to crime show, that troublemakers need to be pursued harder in order to preserve law and order (`V036_6`) [@deconinckPublicAttitudesImmigration2021]. The distribution of the RWA Variables, from which only the `RWA_Total` was used, can be seen in Appendix \ref{app-vardistr-rwa}
+
+To test the expected effects, control variables were included to keep other influences stable. For this the model includes a variable controlling the participants sex (`V001`: 1 = Male; 2 = Female), age group (`Leeftijd3N`: 1 = 18-34; 2 = 35-54; 3 = 55+), tertiary educational degree (`Diploma2`: 1 = no tertiary degree; 2 = tertiary degree) and political affiliation on a scale from 0 equaling far left, to 10 equaling far right (`V013`) [@deconinckPublicAttitudesImmigration2021]. The use of `Diploma2` is a drastic simplification of country level education variables, however this is in line with the general choice of not using a multilevel model to adapt to possible between country variation as without his, the use of country specific education variables is not doable. The distributions of the control variables can be seen in Appendix \ref{app-vardistr-control}.
+
+*could potentially add SDO variables for control (V037_1-8)* 
+
+
+### Priors - 300 words
+
+justify priors
+
+Intercept normal(3, 1)
+- scale mitpoint center
+- 1 SD wide enough for actual observed values
+- same prior for all intercepts -> simplification
+
+RWA slope normal(0, 0.3)
+- 1-7 scale
+- centered at 0, no directional assumption
+-SD = 0.3 plausible outcomes
+
+Political affiliation(0, 0.15)
+- scale 0-10
+
+sex (0, 1)
+- binary 1-2
+- wide SD appropiate fpr range of possible values
+
+age group (0, 0.5)
+- three possible values 1-2-3
+- wide SD appropriate fpr range of possible values
+
+tertiary degree (0, 1)
+- binary 1-2
+- wide SD appropiate fpr range of possible values
+
+sigma exponential(3)
+- keeps residual variance plausible
+- no hard limitation
+
+ppp in appendix \ref{app-pp-dens}
+
+
+### Model 
+
+The model was run using 4 chains with 4000 iterations each of the chains, from which the first 1000 were used as warmup. 
+
+For the mutlivariate model, all parameters returned R^-values of 1.00 and bulk effective sample sizes in the range from 10507 to 16069 and tail ESS consistently well above 850 (8563+) across all values. This is sufficient for a reliable posterior inference and indicates adequate sampling efficiency. Visual checks of trace plots additionally confirmed a sufficient mix of all four chains across the full posterior (Appendix \ref{app-trace-attitude}--\ref{app-trace-reciprocity}) 
+
+Checking the data simulated by the model was done by running posterior predictive checks. Those (see Appendix \ref{app-postpc-dens}) returned an overal okay model fit, even though there are some notable differences of the estimates and the actual data. The Attitude variate is estimated relatively good, with an underestimated top at `CARIN_Attitude` = 3 and = 5. The general form of the actual data can be explained with the original variables, that were used to build the `CARIN_` variables, being coded on a likert scale as an integer variable, while the model estimates continuous data. The Control and Recipirocity variable were fitted very well, in both cases with a underestimation of the pbserved maximum value at the median. Idenitity and Need again were underestimating the maximum values, but also underestimating the values on the lower side of the scale. 
+
+Leave-one-out cross validation (LOO) was conducted to test the predicitve reliability of the fitted multivariate model. All Pareto k estimates are below 0.7 indicating that no individual cases exert a inappropiate influence on the models predictions and that the models LOO approximation is reliable across all obersvations.
+
+## Results {#sec-results}
+
+For the interpretation it is important to note the direction of the `CARIN_` variables. For those, higher values do not mean a higher perceived migrants deservingness, but rather a more restrictive position against migrants. Therefore a positive coefficient, which would be in line with *H1*, in one of the variables would translate into a drop in perceived deservingness. 
+
+@tbl-modelsummary presents posterior medians and 95% credible intervals for all paremeters that are included in the multivariate model. All coefficients are interpreted as the change in the CARIN dimension for a one-unit increase in the coefficients variable. \
+The control variables vary slightly in their coefficients across the CARIN dimensions. 
+Participants being female rather than male decreases the CARIN score and thereby increasing the percieved deservingness for attitude, control and identity credibly by -0.07 to -0.08. The effect on Need and Reciprocity are not credible as the 95% credible interval includes 0. \
+A increase in the age group variable by one-unit, reflecting the switch from 18-34 years to 35-55 years or 35-55 years to 55+ years, reports a increase in CARIN criteria for attitude (coef = 0.07), control (coef = 0.08), identity (coef = 0.05) and reciprocity (coef = 0.05), while for Need there is a decrease with the coefficient of -0.07. All of these coefficients are credible inside the 95% credible interval.\
+The participants holding a tertiary degree led to a credible decrease in all expected CARIN values, with coefficients ranging from -0.05 (Reciprocity) to -0.16 (Attitude). 
+As expected, political affiliation (0 = left-wing; 100 = right-wing) reports positive coefficients ranging from 0.10 to 0.11 for all CARIN dimensions, except from Need, for which the model reported a borderline credible [-0.02, 0.00] coefficient of -0.01. This displays for attitude, control, identit and reciprocity an decrease in percieved deservingness of migrants for participants with higher, therefore more right leaning political affiliation values.
+
+```{=latex}
+\renewcommand{\arraystretch}{1.5}
+```
+
+```{r}
+#| label: tbl-modelsummary
+#| tbl-cap: "Results of Bayesian multivariate model: posterior medians and 95% credible intervals predicting individual CARIN deservingness dimensions"
+#| tbl-pos: 'H'
+
+library(kableExtra)
+library(tidyverse)
+
+final_table <- readRDS("data/03_model/final_table.rds")
+
+final_table_stacked <- final_table |>
+  mutate(across(
+    -term,
+    ~ str_replace(.x, "(-?\\d\\.\\d+) \\[(.+)\\]", "\\1\n[\\2]") |>
+      linebreak(align = "c")
+  ))
+
+knitr::kable(
+  final_table_stacked,
+  format = "latex", # <-- force LaTeX table generation explicitly
+  col.names = c(
+    "Predictor",
+    "Attitude",
+    "Control",
+    "Identity",
+    "Need",
+    "Reciprocity"
+  ),
+  align = "lccccc",
+  booktabs = TRUE,
+  escape = FALSE
+) |>
+  kable_styling(latex_options = "hold_position") |>
+  column_spec(2:6, width = "2.3cm")
+```
+
+```{=latex}
+\renewcommand{\arraystretch}{1}
+```
+
+For the attitude criterion, the model reports an interecept of 2.31, which is the highest among all CARIN criteria and a coefficient of 0.19 for a one-unit increase in RWA. This coefficient is credibly inside the 95% credible interval [0.17, 0.21] and the model explains 13.9% of the variation inside the variable with R² = 0.139. \
+In the control variate of the model, a intercept of 1.89 is reported. The coefficient for RWA is slightly lower than for attitude with 0.18, which again is credible inside the 95% credible interval [0.16, 0.19]. The model explains 17.8% of the variance in the control variable (Bayes R² = 0.178). \
+The Identity criterion reported a intercept of 1.39 and a RWA coefficient of 0.23, which is the highest coefficient of RWA across all criterias of CARIN. This coefficient again is credible inside the 95% credible interval [0.21, 0.25]. 13.9% of the variance of Idenitity is explained by the model (Bayes R²). \
+The model reported a 2.17 intercept for the need criterion, as well as a RWA coefficient of 0.17, which is the lowest among all of the CARIN criterias. This again is credible with a 95% credible interval of [0.15, 0.19]. For the Need variance, the R² value of 0.034 is the weakest of the whole model, and translates into only 3.4% of the variables variance being explained by the model. \
+For the reciprocity criterion, the intercept is reported at 1.83 and the coefficient of a one unit increase in RWA is at 0.22, again credible inside the credible interval of 95% at [0.20, 0.24]. For the reciprocity variable, 12.6% of the variance is explained by the model (Bayes R²). 
+
+## Discussion {#sec-discuss} 500 words 
+
+### Results
+
+### Limitations
+
+
+## Conclusion {#sec-conclusion} 300 words
+
+
+::: {.callout-note}
+## Data Availability Statement
+The data used for this analysis is openly available in @deconinckPublicAttitudesImmigration2021 and all code used for this paper is available on [github.com](https://github.com/tewesfroehling/Social-Groups-Seminar-Paper.git) and in the submitted .zip file.
+:::
+
+
+
+\newpage
+
+## References
+
+::: {#refs}
+:::
+
+\newpage
+
+## Appendix {.appendix}
+
+\begingroup
+\renewcommand{\figurename}{Appendix}
+\setcounter{figure}{0}
+
+\begin{figure}[htbp] 
+\centering
+\caption{CARIN and RWA variables distributions}
+\label{app-vardistr-carin-rwa}
+\includegraphics[width=0.9\textwidth]{figures/CARIN_RWA_distributions.png}
+\end{figure}
+
+\begin{figure}[htbp] 
+\centering
+\caption{Control variables distributions}
+\label{app-vardistr-control}
+\includegraphics[width=0.9\textwidth]{figures/Control_distributions.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{Prior Predictive Check density overlay}
+\label{app-pp-dens}
+\includegraphics[width=0.9\textwidth]{figures/pp_density.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{MCMC Trace Plots: Multivariate Model: Attitude}
+\label{app-trace-attitude}
+\includegraphics[width=0.9\textwidth]{figures/trace_multivar_attitude.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{MCMC Trace Plots: Multivariate Model: Control}
+\label{app-trace-control}
+\includegraphics[width=0.9\textwidth]{figures/trace_multivar_control.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{MCMC Trace Plots: Multivariate Model: Identity}
+\label{app-trace-identity}
+\includegraphics[width=0.9\textwidth]{figures/trace_multivar_identity.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{MCMC Trace Plots: Multivariate Model: Need}
+\label{app-trace-need}
+\includegraphics[width=0.9\textwidth]{figures/trace_multivar_need.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{MCMC Trace Plots: Multivariate Model: Reciprocity}
+\label{app-trace-reciprocity}
+\includegraphics[width=0.9\textwidth]{figures/trace_multivar_reciprocity.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{Posterior Predictive Check density overlay}
+\label{app-postpc-dens}
+\includegraphics[width=0.9\textwidth]{figures/postpc_density.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\caption{Prdicted Probability Ribbon}
+\label{pred-prob-rib}
+\includegraphics[width=0.9\textwidth]{figures/pred_prob_rib.png}
+\end{figure}
+
+
+\endgroup

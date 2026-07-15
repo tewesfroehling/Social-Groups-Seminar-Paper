@@ -38,7 +38,7 @@ apa.csl
 # manuscript qmd
 
 manuscript.pdf
-manuscript.qmd
+
 
 # code 
 
@@ -58,3 +58,8 @@ data/03_model/final_table.rds
 # saved loo output (only saved because of long computation time)
 
 loo_output.txt
+
+# backup files used as saves when adjusting the code to run in RStudio and Positron
+
+code/01_data_exploration_manipulation_positron.qmd
+code/02_multivar_model_positron.qmd

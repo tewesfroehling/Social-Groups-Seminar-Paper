@@ -69,10 +69,9 @@ chain_cols <- c(col_1, col_2, col_3, col_4)
 #| notes: importing the previously manipulated dataset
   
 deservingness_data <- read.csv2(
-  "data/02_processed/processed_Dataset_DeConinck_et_al.csv"
+  here("data", "02_processed", "processed_Dataset_DeConinck_et_al.csv")
 )
 ```
-
 
 # Priors
 
@@ -303,7 +302,7 @@ pp_5 <- pp_check(
 pp_all <- (pp_1 | pp_2 | pp_3) / (pp_4 | pp_5)
 
 ggsave(
-  "figures/pp_density.png",
+  here("figures", "pp_density.png"),
   plot = pp_all,
   width = 14,
   height = 8,
@@ -341,7 +340,7 @@ fit_multivar <- brm(
   init = 0,
   seed = 2026,
   cores = 4,
-  file = "data/03_model/fit_multivar.rds"
+  file = here("data", "03_model", "fit_multivar")
 )
 ```
 
@@ -351,7 +350,10 @@ fit_multivar <- brm(
 #| label: save-model-fit
 # notes: saving the fitted model. allows for quick computation times by not needing to refit and recompile STAN each time when running the code
 
-saveRDS(fit_multivar, "data/03_model/fit_multivar.rds")
+saveRDS(
+  fit_multivar,
+  here("data", "03_model", "fit_multivar.rds")
+)
 ```
 
 # MCMC
@@ -394,7 +396,7 @@ trace_multivar_attitude <- mcmc_trace(
   theme_minimal()
 
 ggsave(
-  "figures/trace_multivar_attitude.png",
+  here("figures", "trace_multivar_attitude.png"),
   plot = trace_multivar_attitude,
   width = 10,
   height = 8,
@@ -421,7 +423,7 @@ trace_multivar_control <- mcmc_trace(
   theme_minimal()
 
 ggsave(
-  "figures/trace_multivar_control.png",
+  here("figures", "trace_multivar_control.png"),
   plot = trace_multivar_control,
   width = 10,
   height = 8,
@@ -448,7 +450,7 @@ trace_multivar_identity <- mcmc_trace(
   theme_minimal()
 
 ggsave(
-  "figures/trace_multivar_identity.png",
+  here("figures", "trace_multivar_identity.png"),
   plot = trace_multivar_identity,
   width = 10,
   height = 8,
@@ -475,7 +477,7 @@ trace_multivar_need <- mcmc_trace(
   theme_minimal()
 
 ggsave(
-  "figures/trace_multivar_need.png",
+  here("figures", "trace_multivar_need.png"),
   plot = trace_multivar_need,
   width = 10,
   height = 8,
@@ -502,7 +504,7 @@ trace_multivar_reciprocity <- mcmc_trace(
   theme_minimal()
 
 ggsave(
-  "figures/trace_multivar_reciprocity.png",
+  here("figures", "trace_multivar_reciprocity.png"),
   plot = trace_multivar_reciprocity,
   width = 10,
   height = 8,
@@ -600,7 +602,7 @@ ppc_all <- (ppc_dens_multivar_attitude |
   (ppc_dens_multivar_need | ppc_dens_multivar_reciprocity)
 
 ggsave(
-  "figures/postpc_density.png",
+  here("figures", "postpc_density.png"),
   plot = ppc_all,
   width = 14,
   height = 8,
@@ -783,7 +785,7 @@ pred_prob_rib <- (ce_attitude_gg | ce_control_gg | ce_identity_gg) /
   (ce_need_gg | ce_reciprocity_gg)
 
 ggsave(
-  "figures/pred_prob_rib.png",
+  here("figures", "pred_prob_rib.png"),
   plot = pred_prob_rib,
   width = 14,
   height = 8,
@@ -909,7 +911,10 @@ kable(
   caption = "Bayesian Multivariate Model: Posterior Medians [95% Credible Intervals] Predicting CARIN Deservingness Dimensions"
 )
 
-saveRDS(final_table, "data/03_model/final_table.rds")
+saveRDS(
+  final_table,
+  here("data", "03_model", "final_table.rds")
+)
 ```
 
 # Session Info
