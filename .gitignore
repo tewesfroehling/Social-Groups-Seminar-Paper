@@ -33,10 +33,10 @@ air.toml
 reference_sg.bib
 apa.csl
 
-# manuscript qmd
+# manuscript
 
 manuscript.pdf
-
+manuscript.qmd
 
 # code 
 

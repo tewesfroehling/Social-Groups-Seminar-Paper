@@ -339,9 +339,8 @@ fit_multivar <- brm(
   warmup = 1000,
   init = 0,
   seed = 2026,
-  cores = 4,
+  cores = 4),
   file = here("data", "03_model", "fit_multivar")
-)
 ```
 
 # Save models as .rds
