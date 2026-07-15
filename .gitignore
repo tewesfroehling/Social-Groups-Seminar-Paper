@@ -24,9 +24,7 @@ Thumbs.db
 .vscode
 air.toml
 
-# Figures
 
-figures
 /.quarto/
 **/*.quarto_ipynb
 
