@@ -837,7 +837,6 @@ tibble(
 # notes: loo statistics to compute pareto k statistics
 loo_val <- loo(fit_multivar)
 print(loo_val)
-capture.output(print(loo_val), file = "loo_output.txt")
 ```
 
 # Model summary

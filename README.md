@@ -35,7 +35,7 @@ To allow quickly running the code, the model fitted with brms is saves in `data/
 
 To run the full model by going through the fitting process simply delete line 343 (`file = here("data", "03_model", "fit_multivar")`) and delete the `,` in end of the line above.
 
-Should you run into too long computation times, deleting the loo diagnostic code chunk (line 835-841) could help. 
+Should you run into too long computation times, deleting the loo diagnostic code chunk (line 835-840) could help. 
 
 
 ## Tools used: 
