@@ -60,7 +60,7 @@ Muno, Tristan (2026). qqs: A lightweight R package for streamlined research proj
 
 All code directly written by AI is marked in the .qmd files.
 
-Besides that, AI was used for specific trouble-shooting in the code and finding, further understanding and improving existing command options.
+Besides that, AI was used for specific trouble-shooting in the code and github and for finding, further understanding and improving existing command options. 
 
 Ai-models used:
 
