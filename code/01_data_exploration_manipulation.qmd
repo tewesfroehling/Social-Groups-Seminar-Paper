@@ -239,7 +239,7 @@ p1.6 <- ggplot(deservingness_data, aes(CARIN_Total)) +
 CARIN_plot <- (p1.1 | p1.2 | p1.3) / (p1.4 | p1.5 | p1.6)
 
 ggsave(
-  filename = "figures/CARIN_distributions.png",
+  filename = here("figures", "CARIN_distributions.png"),
   plot = CARIN_plot,
   width = 8,
   height = 6,
@@ -375,7 +375,7 @@ p2.4 <- ggplot(deservingness_data, aes(RWA_Total)) +
 RWA_Total_plot <- p2.4
 
 ggsave(
-  filename = "figures/RWA_Total_distribution.png",
+  filename = here("figures", "RWA_Total_distribution.png"),
   plot = RWA_Total_plot,
   width = 8,
   height = 6,
@@ -387,7 +387,7 @@ ggsave(
 RWA_plot <- (p2.1 | p2.2) / (p2.3 | p2.4)
 
 ggsave(
-  filename = "figures/RWA_distributions.png",
+  filename = here("figures", "RWA_distributions.png"),
   plot = RWA_plot,
   width = 8,
   height = 6,
@@ -400,7 +400,7 @@ ggsave(
 CARIN_RWA_plot <- (p1.1 | p1.2 | p1.3) / (p1.4 | p1.5 | p2.4)
 
 ggsave(
-  filename = "figures/CARIN_RWA_distributions.png",
+  filename = here("figures", "CARIN_RWA_distributions.png"),
   plot = CARIN_RWA_plot,
   width = 8,
   height = 5,
@@ -467,7 +467,7 @@ p3.4 <- ggplot(deservingness_data, aes(Diploma2)) +
 Control_plot <- (p3.1 | p3.2) / (p3.3 | p3.4)
 
 ggsave(
-  filename = "figures/Control_distributions.png",
+  filename = here("figures", "Control_distributions.png"),
   plot = Control_plot,
   width = 8,
   height = 4.5,
